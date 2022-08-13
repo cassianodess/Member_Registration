@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/98af29da6c.js" crossorigin="anonymous"></script>
+    <title>Members Registration</title>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            border: 3px solid black;
+            text-align: center;
+            background-color: #5333ed;
+            background: linear-gradient(to right, #5333ed, rgba(0, 0, 0, 0.793));
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            height: 60vh;
+            overflow-y: scroll;
+            margin: 20px auto;
+        }
+
+        .card {
+            width: 500px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #5de389;
+            margin: 15px auto;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .btn,
+        a {
+            text-decoration: none;
+            color: white;
+
+        }
+
+        .btn {
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .primary-button {
+            cursor: pointer;
+            height: 50px;
+            padding: 10px;
+            background-color: #5050cf;
+            border-radius: 5px;
+            color: white;
+
+        }
+
+        .actions {
+            margin-left: auto;
+
+        }
+
+        .fa-pen {
+            color: yellow;
+            margin-right: 10px;
+        }
+
+        .fa-trash {
+            color: rgb(172, 6, 6);
+        }
+
+        .empty {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Members</h1>
+    </div>
+
+    <div class="container">
+        {% if mymembers %}
+
+        {% for x in mymembers %}
+        <div class="card">
+            <div class="card-name">
+                {{ x.firstname }}
+                {{ x.lastname }}
+            </div>
+            <div class="actions">
+                <a href="update/{{ x.id }}"><i class="fa-solid fa-pen"></i></a>
+                <a href="delete/{{ x.id }}"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2 class="empty">Insert data</h2>
+        {% endif %}
+    </div>
+
+    <div class="btn">
+        <a href="add/">
+            <button class="primary-button">
+                Add member
+            </button>
+        </a>
+    </div>
+
+
+</body>
+
+</html>
